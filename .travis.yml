@@ -1,0 +1,57 @@
+language: java
+sudo: false
+
+branches:
+  only:
+    - stable
+    - master
+
+matrix:
+  include:
+  - os: linux
+    jdk: oraclejdk8
+    dist: trusty
+  - os: linux
+    jdk: oraclejdk7
+    dist: trusty
+  - os: linux
+    jdk: openjdk6
+    dist: trusty
+  - os: linux
+    jdk: openjdk6
+    dist: trusty
+    dist: precice
+    osx_image: xcode6.4
+    language: java
+  - os: osx
+    osx_image: xcode7.2
+    language: java
+  - os: osx
+    osx_image: xcode7.3
+    language: java
+  - os: osx
+    osx_image: xcode8
+    language: java
+  - os: osx
+    osx_image: xcode8.3
+    language: java
+  - os: osx
+    osx_image: xcode9
+    language: java
+
+install:  "make init"
+
+# The following is used to get coveralls working: add affter codecov
+#  - travis_retry pip install python-coveralls 2>/dev/null || python3 -m pip install python-coveralls || true ;
+#  - coveralls 2>/dev/null || true
+#  - travis_retry pip uninstall -y python-coveralls || travis_retry python3 -m pip uninstall -y python-coveralls || true
+#  - travis_retry pip uninstall -y PyYAML || travis_retry python3 -m pip uninstall -y PyYAML || true
+
+script:
+  - make clean
+  - make test
+  - make clean || exit $?
+
+after_success:
+  - echo "DONE."
+
