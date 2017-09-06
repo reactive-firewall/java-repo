@@ -216,9 +216,8 @@ uninstall:
 purge: clean uninstall
 	$(QUIET)$(ECHO) "$@: Done."
 
-test: cleanup
-	$(QUIET)DO_FAIL=exit 2 ;
-	$(QUIET)$(DO_FAIL);
+test: cleanup build
+	$(QUIET)$(WAIT)
 	$(QUIET)$(ECHO) "$@: Done."
 
 test-style: cleanup
