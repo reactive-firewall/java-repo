@@ -98,7 +98,7 @@ safe:
 init:
 	$(QUIET)$(ECHO) "$@: Done."
 
-build: ./src ./lib ./bin ./dist ./dist/$(TARGET_NAME).jar JavaDoc clean
+build: ./src ./bin ./dist ./dist/$(TARGET_NAME).jar JavaDoc clean
 	$(QUIET)$(ECHO) "Built "$(PROJECT_NAME)"." ;
 
 install: build
@@ -163,14 +163,15 @@ clean: cleanup
 	$(QUIET)$(CHMOD) 750 $@
 	$(QUIET)$(CHOWN) $(LOGNAME) $@
 
+
 ./dist/$(TARGET_NAME).jar: ./bin ./dist ./resources ./resources/Manifest ./README
 	$(QUIET)$(JARZIP) cmf ./resources/Manifest ./dist/$(TARGET_NAME).jar -C ./bin .
 	$(QUIET)$(WAIT) ;
 	$(QUIET)$(JARZIP) uf ./dist/$(TARGET_NAME).jar README ;
 	$(QUIET)$(WAIT) ;
-	$(QUIET)$(RM) ./lib/.DS_Store 2>/dev/null ;
+	$(QUIET)$(RM) ./dist/.DS_Store 2>/dev/null || true
 	$(QUIET)$(WAIT) ;
-	$(QUIET)$(ECHO) "Bundled PakTools." ;
+	$(QUIET)$(ECHO) "Bundled "$(TARGET_NAME)"." ;
 
 ./src:
 	$(QUIET)$(MKDIR) $@
