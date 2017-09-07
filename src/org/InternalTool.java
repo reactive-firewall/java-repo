@@ -17,8 +17,9 @@ import java.io.File;
 public class InternalTool {
     
     /**
+    Debug Mode.
     */
-    private static boolean ISDEBUGMODE = FALSE;
+    private static boolean ISDEBUGMODE = false;
     
     /**
      Runs a given command and returns the output. Provides more boilerplate code than
@@ -81,7 +82,7 @@ public class InternalTool {
         java.lang.String theCommand = new java.lang.String( someTool ).intern();
         
         if ( org.InternalTool.ISDEBUGMODE ) {
-            pak.util.Log.logDebugMessage("Running: " + someTool);
+            System.out.println("Running: " + someTool);
         };
         
         try {
