@@ -55,6 +55,10 @@ ifeq "$(DO_FAIL)" ""
 	DO_FAIL=$(ECHO) "ok"
 endif
 
+ifeq "$(LOGNAME)" ""
+	LOGNAME=whoami
+endif
+
 CHGRP = chgrp
 CHMOD = chmod
 CHOWN = chown
