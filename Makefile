@@ -157,7 +157,7 @@ clean: cleanup
 	$(QUIET)$(MKDIR) $@
 	$(QUIET)$(CHMOD) 750 $@
 	$(QUIET)$(CHOWN) $(LOGNAME) $@
-	$(QUIET)$(JAVAC) -encoding UTF8 -classpath ./src/:**/*.jar -d $@ ./src/org/**/*.java
+	$(QUIET)$(JAVAC) -encoding UTF8 -classpath ./src/:**/*.jar -d $@ ./src/org/*.java
 	$(QUIET)$(WAIT) ;
 	$(QUIET)$(SYNC) ;
 	$(QUIET)$(ECHO) "Compiled "$(TARGET_NAME)"." ;
