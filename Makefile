@@ -56,7 +56,7 @@ ifeq "$(DO_FAIL)" ""
 endif
 
 ifeq "$(LOGNAME)" ""
-	LOGNAME=whoami
+	LOGNAME=`whoami`
 endif
 
 CHGRP = chgrp
