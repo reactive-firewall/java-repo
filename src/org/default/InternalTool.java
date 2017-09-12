@@ -1,4 +1,4 @@
-package org;
+package org.default;
 import java.util.concurrent.RejectedExecutionException;
 import java.lang.Runnable;
 import java.util.Scanner;
