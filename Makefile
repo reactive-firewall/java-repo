@@ -199,7 +199,7 @@ clean: cleanup
 
 JavaDoc: ./docs ./docs/robots.txt
 	$(QUIET)$(ECHO) -n "Generating Documentation... "
-	$(QUIET)if [[ ( -e ./docs/stylesheet.css ) ]] ; then $(JAVADOC) -d ./docs/ $(JAVADOCTAGS) -stylesheetfile ./docs/stylesheet.css org.* ; else $(JAVADOC) -d ./docs/ $(JAVADOCTAGS) org.$(TARGET_NAME).* ; fi
+	$(QUIET)if [[ ( -e ./docs/stylesheet.css ) ]] ; then $(JAVADOC) -d ./docs/ $(JAVADOCTAGS) -stylesheetfile ./docs/stylesheet.css org.$(TARGET_NAME).* ; else $(JAVADOC) -d ./docs/ $(JAVADOCTAGS) org.$(TARGET_NAME).* ; fi
 	$(QUIET)$(ECHO) "DONE" ;
 
 ./docs:

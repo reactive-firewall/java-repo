@@ -102,9 +102,7 @@ do
     wait ;
     SHADIGEST=$(openssl sha1 "${FILE_PATH}" | \grep -oE -m 1 "[[:space:]]+[0123456789abcdef]{40}" | \grep -oE -m 1 "[0123456789abcdef]{40}")
     
-    if [[ $(\uname -s) == "Darwin" ]] ; then
-        TEMP_PATH=$(basename $(printf ${FILE_PATH} | tr '/' '.') ".class")
-    elif [[ $(\uname -s) == "Linux" ]] ; then
+    if [[ $(\uname -s) == "Darwin" ]] || [[ $(\uname -s) == "Linux" ]] ; then
         TEMP_PATH=$(basename $(printf ${FILE_PATH} | tr '/' '.') ".class")
     else
         exit 3;
