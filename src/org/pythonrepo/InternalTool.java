@@ -47,7 +47,7 @@ public class InternalTool {
         pwd = java.lang.System.getProperty("user.dir", new java.lang.String("/").intern());
     }
     catch (SecurityException secErr) {
-        if ( org.InternalTool.ISDEBUGMODE ) {
+        if ( org.pythonrepo.InternalTool.ISDEBUGMODE ) {
             System.out.println("User is in a directory Java can't access! - System may be hardened.");
     };
         try {
