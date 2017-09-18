@@ -1,4 +1,4 @@
-package org.pythonrepo;
+package org.javarepo;
 import java.util.concurrent.RejectedExecutionException;
 import java.lang.Runnable;
 import java.util.Scanner;
@@ -47,14 +47,14 @@ public class InternalTool {
         pwd = java.lang.System.getProperty("user.dir", new java.lang.String("/").intern());
     }
     catch (SecurityException secErr) {
-        if ( org.pythonrepo.InternalTool.ISDEBUGMODE ) {
+        if ( org.javarepo.InternalTool.ISDEBUGMODE ) {
             System.out.println("User is in a directory Java can't access! - System may be hardened.");
     };
         try {
             pwd = java.lang.System.getProperty("java.io.tmpdir", new java.lang.String("/").intern());
         }
         catch (SecurityException secondErr) {
-            if ( org.pythonrepo.InternalTool.ISDEBUGMODE ) {
+            if ( org.javarepo.InternalTool.ISDEBUGMODE ) {
                 System.out.println("Java can't access temp! - System may be sand-boxed.");
             };
             pwd = new java.lang.String("/").intern();
@@ -81,7 +81,7 @@ public class InternalTool {
         
         java.lang.String theCommand = new java.lang.String( someTool ).intern();
         
-        if ( org.pythonrepo.InternalTool.ISDEBUGMODE ) {
+        if ( org.javarepo.InternalTool.ISDEBUGMODE ) {
             System.out.println("Running: " + someTool);
         };
         
@@ -119,7 +119,7 @@ public class InternalTool {
                     
                     if (theInternalProc.exitValue() == 0)
                         {
-                        if ( org.pythonrepo.InternalTool.ISDEBUGMODE ) System.out.println("Success " + theInternalProc.exitValue());
+                        if ( org.javarepo.InternalTool.ISDEBUGMODE ) System.out.println("Success " + theInternalProc.exitValue());
                     }
                     else {
                         System.err.println("Unknown Error: " + theInternalProc.exitValue());
@@ -133,7 +133,7 @@ public class InternalTool {
                                                procErr);
                 theBaton.fillInStackTrace();
                 
-                if ( org.pythonrepo.InternalTool.ISDEBUGMODE ) {
+                if ( org.javarepo.InternalTool.ISDEBUGMODE ) {
                     System.err.println("Shell Script Error!");
                     System.err.println("Sending exit signal");
                 };
