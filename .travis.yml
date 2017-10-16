@@ -10,17 +10,12 @@ matrix:
   include:
   - os: linux
     jdk: oraclejdk8
-    dist: trusty
   - os: linux
     jdk: oraclejdk7
-    dist: trusty
   - os: linux
     jdk: openjdk6
-    dist: trusty
   - os: linux
     jdk: openjdk6
-    dist: trusty
-    dist: precice
     osx_image: xcode6.4
     language: java
   - os: osx
@@ -50,6 +45,7 @@ install:  "make init"
 script:
   - make clean
   - make test
+  - make JavaDoc
   - make clean || exit $?
 
 after_success:
