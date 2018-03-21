@@ -9,6 +9,14 @@ jobs:
           DEBIAN_FRONTEND: noninteractive
           SHELL: /bin/bash
     steps:
+      - run:
+          name: "update apt"
+          command: |
+            sudo apt-get -yq update ; wait ;
+      - run:
+          name: "install dependencies"
+          command: |
+            sudo apt-get -y install build-essential make git ; wait ;
       - checkout
       - run:
           shell: /bin/bash
@@ -19,7 +27,7 @@ jobs:
           shell: /bin/bash
           name: "install java coverage attempt"
           command: |
-            echo "Not yet implemented" || which -a make && echo $PATH && env && pwd || true
+            echo "Not yet implemented" || true
       - run:
           shell: /bin/bash
           name: "clean up for test"
