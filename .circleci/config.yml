@@ -19,7 +19,7 @@ jobs:
           shell: /bin/bash
           name: "install java coverage attempt"
           command: |
-            echo "Not yet implemented" || true
+            echo "Not yet implemented" || which -a make && echo $PATH && env && pwd || true
       - run:
           shell: /bin/bash
           name: "clean up for test"
