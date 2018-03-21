@@ -2,7 +2,7 @@
 
 # Java Repo Template
 # ..................................
-# Copyright (c) 2017, Kendrick Walls
+# Copyright (c) 2017-2018, Kendrick Walls
 # ..................................
 # Licensed under MIT (the "License");
 # you may not use this file except in compliance with the License.
@@ -168,9 +168,10 @@ clean: cleanup
 	$(QUIET)$(CHOWN) $(LOGNAME) $@
 
 
-./dist/$(TARGET_NAME).jar: ./bin ./dist ./resources ./resources/Manifest ./README
+./dist/$(TARGET_NAME).jar: ./bin ./dist ./resources ./resources/Manifest ./README.md
 	$(QUIET)$(JARZIP) cmf ./resources/Manifest ./dist/$(TARGET_NAME).jar -C ./bin .
 	$(QUIET)$(WAIT) ;
+	$(QUIET)$(CP) README.md README;
 	$(QUIET)$(JARZIP) uf ./dist/$(TARGET_NAME).jar README ;
 	$(QUIET)$(WAIT) ;
 	$(QUIET)$(RM) ./dist/.DS_Store 2>/dev/null || true
