@@ -7,7 +7,6 @@ A Java Project Template. This is just a placeholder at the moment.
 [![Build Status](https://travis-ci.org/reactive-firewall/java-repo.svg?branch=master)](https://travis-ci.org/reactive-firewall/java-repo)
 [![CircleCI](https://circleci.com/gh/reactive-firewall/java-repo/tree/master.svg?style=svg)](https://circleci.com/gh/reactive-firewall/java-repo/tree/master)
 [![Dependency Status](https://gemnasium.com/badges/github.com/reactive-firewall/java-repo.svg)](https://gemnasium.com/github.com/reactive-firewall/java-repo)
-[![Dependency Status](https://www.versioneye.com/user/projects/59cc1dc1368b0831e6126dc6/badge.svg?style=flat-round)](https://www.versioneye.com/user/projects/59cc1dc1368b0831e6126dc6)
 [![code coverage](https://codecov.io/gh/reactive-firewall/java-repo/branch/master/graph/badge.svg)](https://codecov.io/gh/reactive-firewall/java-repo/branch/master/)
 [![Coverage Status](https://coveralls.io/repos/github/reactive-firewall/java-repo/badge.svg?branch=master)](https://coveralls.io/github/reactive-firewall/java-repo?branch=master)
 ![commits-since](https://img.shields.io/github/commits-since/reactive-firewall/java-repo/stable.svg?maxAge=9000)
