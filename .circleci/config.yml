@@ -3,7 +3,7 @@ jobs:
   build:
     working_directory: ~/java-repo
     docker:
-      - image: circleci/openjdk:latest
+      - image: circleci/openjdk:latest-node-browsers
         environment:
           CI: cicleci
           DEBIAN_FRONTEND: noninteractive
