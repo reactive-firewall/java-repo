@@ -9,7 +9,7 @@ import java.io.File;
  * A class to interface with an internal tool. Primarily for use with UNIX and
  * Linux environments. This class primarily provides the boilerplate code for 
  * {@link java.lang.Runtime#exec(java.lang.String, java.lang.String[], java.io.File)}.
- * EXAMPLE CODE IS FROM PAK - programming accessory kit. 
+ * EXAMPLE CODE IS FROM PAK - programming accessory kit.
  * @author Kendrick Walls
  * @version 20120921
  * @since 20120622
@@ -21,6 +21,35 @@ public class InternalTool {
     */
     private static boolean ISDEBUGMODE = false;
     
+
+    /**
+     @return string the tool's output text.
+     @see java.lang.System#getProperty(java.lang.String)
+     @throws java.util.concurrent.RejectedExecutionException on error.
+     @since 20180522
+    */
+    public static java.lang.String getPWD(){
+        java.lang.String pwd;
+        try {
+            pwd = java.lang.System.getProperty("user.dir", new java.lang.String("/").intern());
+        }
+        catch (SecurityException secErr) {
+            if ( org.javarepo.InternalTool.ISDEBUGMODE ) {
+                System.out.println("User is in a directory Java can't access! - System may be hardened.");
+            };
+            try {
+                 pwd = java.lang.System.getProperty("java.io.tmpdir", new java.lang.String("/").intern());
+            }
+            catch (SecurityException secondErr) {
+                if ( org.javarepo.InternalTool.ISDEBUGMODE ) {
+                    System.out.println("Java can't access temp! - System may be sand-boxed.");
+                };
+                pwd = new java.lang.String("/").intern();
+            }//SecurityException
+        }//SecurityException
+        return pwd;
+    }
+
     /**
      Runs a given command and returns the output. Provides more boilerplate code than
      {@link java.lang.Runtime#exec(java.lang.String, java.lang.String[], java.io.File) exec(String, String[], File)}
@@ -41,26 +70,8 @@ public class InternalTool {
     public static java.lang.String useInternalTool(java.lang.String someTool)
     {
     /* the path to the working directory */
-    java.lang.String pwd;
-    
-    try {
-        pwd = java.lang.System.getProperty("user.dir", new java.lang.String("/").intern());
-    }
-    catch (SecurityException secErr) {
-        if ( org.javarepo.InternalTool.ISDEBUGMODE ) {
-            System.out.println("User is in a directory Java can't access! - System may be hardened.");
-    };
-        try {
-            pwd = java.lang.System.getProperty("java.io.tmpdir", new java.lang.String("/").intern());
-        }
-        catch (SecurityException secondErr) {
-            if ( org.javarepo.InternalTool.ISDEBUGMODE ) {
-                System.out.println("Java can't access temp! - System may be sand-boxed.");
-            };
-            pwd = new java.lang.String("/").intern();
-        }//SecurityException
-    }//SecurityException
-    
+    java.lang.String pwd = getPWD();
+
     /* at this point the pwd should be valid */
     try {
         pwd = new java.io.File(pwd).getCanonicalPath().intern();
