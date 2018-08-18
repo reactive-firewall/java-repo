@@ -6,6 +6,10 @@ branches:
     - stable
     - master
 
+Env:
+
+jdk:
+
 matrix:
   include:
   - os: linux
@@ -15,13 +19,10 @@ matrix:
   - os: linux
     jdk: openjdk6
   - os: linux
+    osx_image: xcode9.3
+    language: java
+  - os: osx
     jdk: openjdk6
-    osx_image: xcode6.4
-    language: java
-  - os: osx
-    osx_image: xcode7.2
-    language: java
-  - os: osx
     osx_image: xcode7.3
     language: java
   - os: osx
