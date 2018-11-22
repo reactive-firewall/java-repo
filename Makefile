@@ -2,7 +2,7 @@
 
 # Java Repo Template
 # ..................................
-# Copyright (c) 2017, Kendrick Walls
+# Copyright (c) 2017-2018, Kendrick Walls
 # ..................................
 # Licensed under MIT (the "License");
 # you may not use this file except in compliance with the License.
@@ -67,7 +67,7 @@ EXIT = exit
 GENMANIFEST = ./genManifest.sh
 JAVAC = javac
 JAVADOC = javadoc
-JAVADOCTAGS = -protected -version -link http://download.oracle.com/javase/7/docs/api/ -charset "UTF-8" -windowtitle "java-repo Documentation" -author -group "Java Template Repository" org:org.* -sourcepath ./src/
+JAVADOCTAGS = -protected -version -link http://download.oracle.com/javase/9/docs/api/ -charset "UTF-8" -windowtitle "java-repo Documentation" -author -group "Java Template Repository" org:org.* -sourcepath ./src/
 JARZIP = jar
 MAKE_OPTIONS = --no-print-directory
 MAKEWHATIS = /usr/libexec/makewhatis.local 
@@ -168,9 +168,10 @@ clean: cleanup
 	$(QUIET)$(CHOWN) $(LOGNAME) $@
 
 
-./dist/$(TARGET_NAME).jar: ./bin ./dist ./resources ./resources/Manifest ./README
+./dist/$(TARGET_NAME).jar: ./bin ./dist ./resources ./resources/Manifest ./README.md
 	$(QUIET)$(JARZIP) cmf ./resources/Manifest ./dist/$(TARGET_NAME).jar -C ./bin .
 	$(QUIET)$(WAIT) ;
+	$(QUIET)$(CP) README.md README;
 	$(QUIET)$(JARZIP) uf ./dist/$(TARGET_NAME).jar README ;
 	$(QUIET)$(WAIT) ;
 	$(QUIET)$(RM) ./dist/.DS_Store 2>/dev/null || true

@@ -6,27 +6,20 @@ branches:
     - stable
     - master
 
+Env:
+
+jdk:
+
 matrix:
   include:
   - os: linux
     jdk: oraclejdk8
-    dist: trusty
   - os: linux
     jdk: oraclejdk7
-    dist: trusty
   - os: linux
     jdk: openjdk6
-    dist: trusty
-  - os: linux
+  - os: osx
     jdk: openjdk6
-    dist: trusty
-    dist: precice
-    osx_image: xcode6.4
-    language: java
-  - os: osx
-    osx_image: xcode7.2
-    language: java
-  - os: osx
     osx_image: xcode7.3
     language: java
   - os: osx
@@ -37,6 +30,12 @@ matrix:
     language: java
   - os: osx
     osx_image: xcode9
+    language: java
+  - os: linux
+    osx_image: xcode9.2
+    language: java
+  - os: linux
+    osx_image: xcode9.3
     language: java
 
 install:  "make init"
@@ -50,6 +49,7 @@ install:  "make init"
 script:
   - make clean
   - make test
+  - make JavaDoc
   - make clean || exit $?
 
 after_success:
