@@ -13,6 +13,10 @@ jdk:
 matrix:
   include:
   - os: linux
+    jdk: oraclejdk10
+  - os: linux
+    jdk: oraclejdk11
+  - os: linux
     jdk: oraclejdk8
   - os: linux
     jdk: oraclejdk7
@@ -31,12 +35,48 @@ matrix:
   - os: osx
     osx_image: xcode9
     language: java
-  - os: linux
+  - os: osx
     osx_image: xcode9.2
     language: java
-  - os: linux
+  - os: osx
     osx_image: xcode9.3
     language: java
+  - os: osx
+    osx_image: xcode10
+    language: java
+  - os: osx
+    osx_image: xcode10.1
+    language: java
+  - os: osx
+    jdk: openjdk11
+    osx_image: xcode10.1
+    language: java
+  allow_failures:
+  - os: osx
+    jdk: openjdk11
+    osx_image: xcode10.1
+    language: java
+  - os: osx
+    jdk: openjdk6
+    osx_image: xcode7.3
+    language: java
+  - os: osx
+    osx_image: xcode8
+    language: java
+  - os: osx
+    osx_image: xcode8.3
+    language: java
+  - os: linux
+    jdk: oraclejdk8
+  - os: linux
+    jdk: oraclejdk7
+  - os: linux
+    jdk: openjdk6
+  - os: osx
+    jdk: openjdk6
+    osx_image: xcode7.3
+    language: java
+
 
 install:  "make init"
 
@@ -46,12 +86,14 @@ install:  "make init"
 #  - travis_retry pip uninstall -y python-coveralls || travis_retry python3 -m pip uninstall -y python-coveralls || true
 #  - travis_retry pip uninstall -y PyYAML || travis_retry python3 -m pip uninstall -y PyYAML || true
 
+before_script:
+  - make clean || true
+
 script:
-  - make clean
   - make test
   - make JavaDoc
   - make clean || exit $?
 
-after_success:
+after_script:
   - echo "DONE."
 
