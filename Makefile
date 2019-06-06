@@ -2,7 +2,7 @@
 
 # Java Repo Template
 # ..................................
-# Copyright (c) 2017-2018, Kendrick Walls
+# Copyright (c) 2017-2019, Kendrick Walls
 # ..................................
 # Licensed under MIT (the "License");
 # you may not use this file except in compliance with the License.
@@ -147,6 +147,8 @@ cleanup:
 	$(QUIET)$(RM) ./*/*~ 2>/dev/null || true
 	$(QUIET)$(RM) ./*~ 2>/dev/null || true
 	$(QUIET)$(RM) ./.*~ 2>/dev/null || true
+	$(QUIET)$(RM) ./*/.DS_Store 2>/dev/null || true
+	$(QUIET)$(RM) ./.DS_Store 2>/dev/null || true
 
 clean: cleanup
 	$(QUIET)$(WAIT) ;
